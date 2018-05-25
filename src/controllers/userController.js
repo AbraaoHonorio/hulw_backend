@@ -1,19 +1,28 @@
 
-const repository = require('../repositories/userRepository');
+// const repository = require('../repositories/userRepository');
+const db = require('../db');
 
 exports.get = (req, res, next) => {
-    try {
 
-        var data =  repository.get();
-        data.then(function(response){
-            return res.json(response.rows)
-        })    
+    db.findAll((response) => {
+        return res.json(response.rows);
+    }, (err) => {
+        res.status(500).send({ message: err.message});
+    });
+
+    // try {
+
+    //     var data =  repository.get();
+    //     data.then(function(response){
+    //         return res.json(response.rows)
+    //     })    
            
-      } catch (e) {
-        res.status(500).send({
-            message: 'Falha ao processar sua requisição'
-        });
-    }
+    //   } catch (e) {
+    //     console.log(JSON.parse(e));
+    //     res.status(500).send({
+    //         message: 'Falha ao processar sua requisição'
+    //     });
+    // }
     //res.status(200).send('GET Requisição recebida com sucesso!');
 };
 
