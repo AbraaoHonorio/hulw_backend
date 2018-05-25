@@ -2,7 +2,7 @@
 
 export class user {
 
-    constructor(id, nome, cacpfrgo) {
+    constructor(id, nome, cpf) {
         this.id = id; this.nome = nome;
         this.cpf = cpf;
       }
