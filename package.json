@@ -5,9 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.15.4",
-    "mongoose": "^5.0.16",
+    "pg": "^7.4.3",
     "redis": "^2.8.0",
-    "pg": "^7.4.3"
+    "dotenv-safe": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
