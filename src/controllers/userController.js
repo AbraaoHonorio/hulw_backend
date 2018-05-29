@@ -1,21 +1,21 @@
 
-const repository = require('../repositories/userRepository');
+// const repository = require('../repositories/userRepository');
+const ImportClient = require('../config/config');
+const client = ImportClient.get();
 
-exports.get = (req, res, next) => {
-    try {
+exports.get=  () =>  {
+    const results = []
+        
+    //Realiza a leitura no banco de dados
+    const query = client.query('SELECT * FROM clientes  ')
 
-        var data =  repository.get();
-        data.then(function(response){
-            return res.json(response.rows)
-        })    
-           
-      } catch (e) {
-        res.status(500).send({
-            message: 'Falha ao processar sua requisição'
-        });
-    }
-    //res.status(200).send('GET Requisição recebida com sucesso!');
-};
+    query.then(function(row){
+        results.push(row)
+    })
+
+    return query  
+   
+}
 
 
 exports.getById = (req, res, next) => {

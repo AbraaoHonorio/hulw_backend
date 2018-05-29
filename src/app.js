@@ -9,6 +9,7 @@ const router = express.Router();
 // Carrega as Rotas
 const index = require('./routes/index');
 const userRoute = require('./routes/userRoute');
+const locationRoute = require('./routes/localizacaoRoute');
 
 
 // Habilita o CORS
@@ -21,5 +22,6 @@ app.use(function (req, res, next) {
 
 app.use('/', index);
 app.use('/user', userRoute);
+app.use('/localizacao', locationRoute);
 
  module.exports = app;
