@@ -51,7 +51,7 @@ exports.getById =  function(id_Localizacao)  {
         results.push(row)
     })
 
-    //return query  
+    return query  
    
 
 }
