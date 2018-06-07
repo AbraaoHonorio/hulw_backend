@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', index);
-app.use('/user', userRoute);
+app.use('/usuario', userRoute);
 app.use('/localizacao', locationRoute);
 
 // catch 404 and forward to error handler
