@@ -17,10 +17,7 @@ exports.get = (req, res, next) => {
     try {
 		var data =  repository.get();
         data.then(function(response){
-           /* const data = {id_Usuario: JSON.stringify(response.rows.id_Usuario), cd_CPF: response.rows.cd_CPF,
-                cd_Email: response.rows.cd_Email, no_Pessoa: response.rows.no_Pessoa,dt_Admissao: response.rows.dt_Admissao,}
-            */
-          
+           
             return res.json(response.rows);
         })    
            

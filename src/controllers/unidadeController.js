@@ -38,10 +38,10 @@ exports.getById = (req, res, next) => {
 exports.getByCodigoUnidade = (req, res, next) => {
     
     
-console.log( ' ->   ' +JSON.stringify(req.params.id));
+console.log( ' ->   ' +JSON.stringify(req.params.codigo_unidade));
 
 	try {
-		var data =  repository.getByCodigoUnidade(req.params.id);
+		var data =  repository.getByCodigoUnidade(req.params.codigo_unidade);
 		
         data.then(function(response){
             return res.json(response.rows[0])
