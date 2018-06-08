@@ -14,6 +14,7 @@ const router = express.Router();
 const index = require('./routes/index');
 const userRoute = require('./routes/userRoute');
 const locationRoute = require('./routes/localizacaoRoute');
+const unidadeRoute = require('./routes/unidadeRoute');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/usuario', userRoute);
 app.use('/localizacao', locationRoute);
+app.use('/unidade', unidadeRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
