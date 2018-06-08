@@ -1,12 +1,28 @@
 
  const repository = require('../repositories/userRepository');
 
+ function retiraSenha(elements) {
+    const datas = [];
+    elements.forEach(element => {
+        const data = {id_Usuario: element.id_Usuario, cd_CPF: element.cd_CPF,
+            cd_Email: element.cd_Email, no_Pessoa: element.no_Pessoa,dt_Admissao: element.dt_Admissao}
+        datas.push(data);
+       // console.log(JSON.stringify(data) + JSON.stringify(datas));
+    });
+  
+   
+    return datas;
+  }
+
 exports.get = (req, res, next) => {
     try {
 		var data =  repository.get();
-		
         data.then(function(response){
-            return res.json(response.rows)
+           /* const data = {id_Usuario: JSON.stringify(response.rows.id_Usuario), cd_CPF: response.rows.cd_CPF,
+                cd_Email: response.rows.cd_Email, no_Pessoa: response.rows.no_Pessoa,dt_Admissao: response.rows.dt_Admissao,}
+            */
+          
+            return res.json(response.rows);
         })    
            
       } catch (e) {
@@ -23,7 +39,7 @@ exports.getById = (req, res, next) => {
 		var data =  repository.getById(req.params.id);
 		
         data.then(function(response){
-            return res.json(response.rows)
+            return res.json(retiraSenha(response.rows))
         })    
            
       } catch (e) {
@@ -50,14 +66,14 @@ exports.getByCpf = (req, res, next) => {
     }
 };
 
-/*
+
 exports.post = (req, res, next) => {
 
 	try {
 		var data =  repository.create(req.body);
 		           
         res.status(201).send({
-            message: 'Localização cadastrado com sucesso!'
+            message: 'USUÁRIO cadastrado com sucesso!'
 		});
 		
     } catch (e) {
@@ -75,7 +91,7 @@ exports.put = (req, res, next) => {
 		var data =  repository.update(req.params.id, req.body);
 		           
         res.status(201).send({
-            message: 'Localização atualizada com sucesso!'
+            message: 'Usuário atualizada com sucesso!'
 		});
 		
     } catch (e) {
@@ -89,13 +105,14 @@ exports.put = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
 
-	console.log(JSON.stringify(req.body.id_Localizacao));
+	console.log(JSON.stringify(req.body.id_Usuario));
     try {
-		var data =  repository.remove(req.body.id_Localizacao);
+		var data =  repository.remove(req.body.id_Usuario);
 		
-        data.then(function(response){
-            return res.json(response.rows)
-        })    
+        res.status(201).send({
+            message: 'Usuário deletado com sucesso!'
+		});
+		
            
       } catch (e) {
         res.status(500).send({
@@ -103,25 +120,3 @@ exports.delete = (req, res, next) => {
         });
     }
 };
-
-exports.getById = (req, res, next) => {
-    res.status(200).send('getById Requisição recebida com sucesso!');
-};
-
-
-exports.post = (req, res, next) => {
-    res.status(201).send('post Requisição recebida com sucesso!');
-};
-
-
-exports.put = (req, res, next) => {
-    let id = req.params.id;
-    res.status(201).send(`put Requisição recebida com sucesso! ${id}`);
-};
-
-exports.delete = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(` delete Requisição recebida com sucesso! ${id}`);
-};
-
-*/
