@@ -7,7 +7,6 @@
         const data = {id_Usuario: element.id_Usuario, cd_CPF: element.cd_CPF,
             cd_Email: element.cd_Email, no_Pessoa: element.no_Pessoa,dt_Admissao: element.dt_Admissao}
         datas.push(data);
-       // console.log(JSON.stringify(data) + JSON.stringify(datas));
     });
   
    
@@ -39,7 +38,8 @@ exports.getById = (req, res, next) => {
 		var data =  repository.getById(req.params.id);
 		
         data.then(function(response){
-            return res.json(retiraSenha(response.rows))
+            const user = retiraSenha(response.rows)
+            return res.json(user[0])
         })    
            
       } catch (e) {
@@ -56,8 +56,9 @@ exports.getByCpf = (req, res, next) => {
 		var data =  repository.getByCpf(req.params.cpf);
 		
         data.then(function(response){
-            return res.json(response.rows)
-        })    
+            const user = retiraSenha(response.rows)
+            return res.json(user[0])
+        })      
            
       } catch (e) {
         res.status(500).send({
