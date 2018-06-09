@@ -4,12 +4,15 @@
   "description": "projeto da cadeira de engenharia de software",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "http-errors": "^1.6.3",
     "jade": "^1.11.0",
     "morgan": "^1.9.0",
-    "pg": "^7.4.3"
+    "pg": "^7.4.3",
+    "underscore": "^1.9.1",
+    "validator": "^10.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"

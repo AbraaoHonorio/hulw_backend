@@ -1,10 +1,11 @@
 'use strict'
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const parser = require('body-parser');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 const app = express();
 
@@ -14,9 +15,9 @@ const router = express.Router();
 const index = require('./routes/index');
 const userRoute = require('./routes/userRoute');
 const locationRoute = require('./routes/localizacaoRoute');
-const unidadeRoute = require('./routes/unidadeRoute');
 
 app.use(logger('dev'));
+app.use(parser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -34,22 +35,23 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/usuario', userRoute);
 app.use('/localizacao', locationRoute);
-app.use('/unidade', unidadeRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
   });
   
-  // error handler
-  app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-  
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+
+app.use(function(err, req, res, next) {
+  if (app.get('env') !== 'development')
+      delete err.stack;
+  res.status(err.status).json({
+      'error': {
+          'message': err.message,
+          'status': err.status,
+          'stack': err.stack
+      }
   });
-  
-  module.exports = app;
+});
+
+ module.exports = app;
