@@ -15,6 +15,8 @@ const router = express.Router();
 const index = require('./routes/index');
 const userRoute = require('./routes/userRoute');
 const locationRoute = require('./routes/localizacaoRoute');
+const avaliacaoDesempenhoRoute = require('./routes/avaliacaoDesempenho');
+const avaliacaoProbatorioRoute = require('./routes/avaliacaoProbatorio');
 
 app.use(logger('dev'));
 app.use(parser.json());
@@ -35,6 +37,8 @@ app.use(function (req, res, next) {
 app.use('/', index);
 app.use('/usuario', userRoute);
 app.use('/localizacao', locationRoute);
+app.use('/avaliacao/desempenho', avaliacaoDesempenhoRoute);
+app.use('/avaliacao/probatorio', avaliacaoProbatorioRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
