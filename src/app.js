@@ -17,6 +17,7 @@ const userRoute = require('./routes/userRoute');
 const locationRoute = require('./routes/localizacaoRoute');
 const avaliacaoDesempenhoRoute = require('./routes/avaliacaoDesempenho');
 const avaliacaoProbatorioRoute = require('./routes/avaliacaoProbatorio');
+const unidadeRoute = require('./routes/unidadeRoute');
 
 app.use(logger('dev'));
 app.use(parser.json());
@@ -39,6 +40,7 @@ app.use('/usuario', userRoute);
 app.use('/localizacao', locationRoute);
 app.use('/avaliacao/desempenho', avaliacaoDesempenhoRoute);
 app.use('/avaliacao/probatorio', avaliacaoProbatorioRoute);
+app.use('/unidade', unidadeRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
