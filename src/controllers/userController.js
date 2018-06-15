@@ -57,7 +57,7 @@ exports.getById = (req, res, next) => {
 exports.getByCpf = (req, res, next) => {
     var cpf = req.params.cpf;
     var regex = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
-
+    
     if( cpf.length == 11 ){
 
         var data =  repository.getByCpf(req.params.cpf);

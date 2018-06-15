@@ -13,6 +13,7 @@ const router = express.Router();
 
 // Carrega as Rotas
 const index = require('./routes/index');
+const authRoute = require('./auth/routes/authRoute');
 const userRoute = require('./routes/userRoute');
 const locationRoute = require('./routes/localizacaoRoute');
 const avaliacaoDesempenhoRoute = require('./routes/avaliacaoDesempenho');
@@ -36,6 +37,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', index);
+app.use('/auth', authRoute);
 app.use('/usuario', userRoute);
 app.use('/localizacao', locationRoute);
 app.use('/avaliacao/desempenho', avaliacaoDesempenhoRoute);
@@ -51,7 +53,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   if (app.get('env') !== 'development')
       delete err.stack;
-  res.status(err.status).json({
+      res.status(err.status).json({
       'error': {
           'message': err.message,
           'status': err.status,
