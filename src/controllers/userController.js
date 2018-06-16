@@ -123,8 +123,7 @@ exports.put = (req, res, next) => {
 
     const erros = [];
     const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-    const body = {cd_Senha: req.body.cd_Senha, cd_CPF: req.body.cd_CPF, cd_Email: req.body.cd_Email, 
-                  no_Pessoa: req.body.no_Pessoa, dt_Admissao: req.body.dt_Admissao};
+    const body =  _.pick(req.body, "cd_Senha", "cd_CPF", "cd_Email", "no_Pessoa", "dt_Admissao");
 
     if(!validator.isEmail(body.cd_Email)){
         erros.push("Email invalido");
