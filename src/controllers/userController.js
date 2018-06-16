@@ -9,7 +9,7 @@ const datas = [];
 
 elements.forEach(element => {
     const data = {id_Usuario: element.id_Usuario, cd_CPF: element.cd_CPF,
-        cd_Email: element.cd_Email, no_Pessoa: element.no_Pessoa,dt_Admissao: element.dt_Admissao}
+        cd_Email: element.cd_Email, no_Pessoa: element.no_Pessoa,dt_Admissao: element.dt_Admissao, is_Adm: element.is_Adm}
     datas.push(data);
 });
 
@@ -83,7 +83,7 @@ exports.getByCpf = (req, res, next) => {
 exports.post = (req, res, next) => {
     const erros = [];
     const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
-    const body = _.pick(req.body, "cd_Senha", "cd_CPF", "cd_Email", "no_Pessoa", "dt_Admissao");
+    const body = _.pick(req.body, "cd_Senha", "cd_CPF", "cd_Email", "no_Pessoa", "dt_Admissao", "is_Adm");
 
     if(!validator.isEmail(body.cd_Email)){
         erros.push("Email invalido");
@@ -124,7 +124,7 @@ exports.put = (req, res, next) => {
     const erros = [];
     const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
     const body = {cd_Senha: req.body.cd_Senha, cd_CPF: req.body.cd_CPF, cd_Email: req.body.cd_Email, 
-                  no_Pessoa: req.body.no_Pessoa, dt_Admissao: req.body.dt_Admissao};
+                  no_Pessoa: req.body.no_Pessoa, dt_Admissao: req.body.dt_Admissao, is_Adm: req.body.is_Adm};
 
     if(!validator.isEmail(body.cd_Email)){
         erros.push("Email invalido");
