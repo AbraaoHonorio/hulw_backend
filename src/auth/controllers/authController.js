@@ -6,7 +6,7 @@ const _ = require("underscore");
 
 exports.login =  (req, res, next) => {
     
-    //procurar usuario
+  //procurar usuario
   const body = _.pick(req.body, "cpf", 'password');
 
   const data = repository.getByCpf(body.cpf);
@@ -19,7 +19,7 @@ exports.login =  (req, res, next) => {
     }
 
     if(response.rows[0].cd_Senha == body.password){
-      var token = jwt.sign( { cpf: user[0].cd_CPF }, config.secret, {
+      var token = jwt.sign( { id: user[0].id_Usuario , cpf: user[0].cd_CPF }, config.secret, {
         expiresIn: 86400 // expires in 24 hours
       });
 
@@ -34,13 +34,16 @@ exports.login =  (req, res, next) => {
 }
 
 exports.me = (req, res, next ) => {
+
+  const data = repository.getByCpf(req.cpf);
+  
   data.then((response) => {
     var user = response.rows;
     
     if(!user){
       return res.status(404).send("Usuario não encontrado");
     }
-    res.status(200).send(user);
+    return res.status(200).send(user);
   }).catch((err) => {
     return res.status(500).send("There was a problem finding the user.");
   });

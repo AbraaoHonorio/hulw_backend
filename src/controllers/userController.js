@@ -148,24 +148,16 @@ exports.put = (req, res, next) => {
     if (erros.length) {
         return error(erros, 422, next);
     }else{
-        var data =  repository.create(req.body);
-
-        data.then((response) => {
-            res.json({msg: 'usuario cadastrado com sucesso'});
-        }).catch((err) => {
-            return error(err.message, 500, next);
-        });
-    }
-
-    var data =  repository.update(req.params.id, body);
+        var data =  repository.update(req.params.id, body);
     
-    data.then((response) => {
-        return res.status(201).send({
-            message: 'Usuário atualizada com sucesso!'
-        });
-    }).catch((err) => {
-        return error(err.message);
-    })      
+        data.then((response) => {
+            return res.status(201).send({
+                message: 'Usuário atualizada com sucesso!'
+            });
+        }).catch((err) => {
+            return error(err.message);
+        })  
+    }
 };
 
 

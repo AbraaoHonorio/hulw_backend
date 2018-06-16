@@ -19,7 +19,8 @@ const locationRoute = require('./routes/localizacaoRoute');
 const avaliacaoDesempenhoRoute = require('./routes/avaliacaoDesempenho');
 const avaliacaoProbatorioRoute = require('./routes/avaliacaoProbatorio');
 const unidadeRoute = require('./routes/unidadeRoute');
-
+//Middleware
+const verificaToken = require('./auth/verificaToken');
 app.use(logger('dev'));
 app.use(parser.json());
 app.use(express.json());
@@ -38,14 +39,15 @@ app.use(function (req, res, next) {
 
 app.use('/', index);
 app.use('/auth', authRoute);
-app.use('/usuario', userRoute);
-app.use('/localizacao', locationRoute);
-app.use('/avaliacao/desempenho', avaliacaoDesempenhoRoute);
-app.use('/avaliacao/probatorio', avaliacaoProbatorioRoute);
-app.use('/unidade', unidadeRoute);
+app.use('/usuario', verificaToken, userRoute);
+app.use('/localizacao', verificaToken, locationRoute);
+app.use('/avaliacao/desempenho', verificaToken, avaliacaoDesempenhoRoute);
+app.use('/avaliacao/probatorio', verificaToken, avaliacaoProbatorioRoute);
+app.use('/unidade', verificaToken, unidadeRoute);
 
-// catch 404 and forward to error handler
+//catch 404 and forward to error handler
 app.use(function(req, res, next) {
+    console.log("Erro catch 404");
     next(createError(404));
   });
   

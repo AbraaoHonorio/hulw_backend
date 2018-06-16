@@ -10,10 +10,12 @@ function verificaToken(req, res, next) {
 
   jwt.verify(token, config.secret, function(err, decoded) {
 
-    if (err)
+    if (err){
       return res.status(500).send({ user: null, message: 'Failed to authenticate token.' });
-    // if everything good, save to request for use in other routes
+    }
+    // Se tudo estiver bem, salva a requisição para o user usar em outras rotas
     req.cpf = decoded.cpf;
+    req.id = decoded.id;
     next();
   });
 }

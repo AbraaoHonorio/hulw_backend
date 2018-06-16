@@ -4,8 +4,7 @@ const client = ImportClient.get();
 exports.get =  () =>  {
       
   //Realiza a leitura no banco de dados
-  // const query = client.query('SELECT * "id_Usuario", "cd_CPF","cd_Email", "no_Pessoa", "dt_Admissao" FROM "USUARIO" ');
-  const query = client.query('SELECT * FROM "USUARIO" ');
+  const query = client.query('SELECT * "id_Usuario", "cd_CPF","cd_Email", "no_Pessoa", "dt_Admissao" FROM "USUARIO" ');
   
   return query;
    
@@ -41,14 +40,13 @@ exports.create =  function(UsuarioNovo)  {
 exports.update =  function(idUsuario, UsuarioNovo)  {
 
   const data = {  cd_CPF: UsuarioNovo.cd_CPF, cd_Email: UsuarioNovo.cd_Email, 
-    no_Pessoa: UsuarioNovo.no_Pessoa, dt_Admissao: UsuarioNovo.dt_Admissao}
+    no_Pessoa: UsuarioNovo.no_Pessoa, dt_Admissao: new Date(UsuarioNovo.dt_Admissao)};
 
-  client.query('UPDATE "USUARIO" SET "cd_CPF"=($1), "cd_Email"=($2), "no_Pessoa"=($3), "dt_Admissao"=($4) WHERE "id_Usuario"=($5)',
-  [ data.cd_CPF, data.cd_Email, data.no_Pessoa, data.dt_Admissao,idUsuario])
+  const query = client.query('UPDATE "USUARIO" SET "cd_CPF"=($1), "cd_Email"=($2), "no_Pessoa"=($3), "dt_Admissao"=($4) WHERE "id_Usuario"=($5)',
+  [ data.cd_CPF, data.cd_Email, data.no_Pessoa, data.dt_Admissao,idUsuario]);
+
+  return query;
 }
-
-
-
 
 exports.remove =  function(idUsuario)  {
 
