@@ -4,7 +4,7 @@ const client = ImportClient.get();
 exports.get =  () =>  {
       
   //Realiza a leitura no banco de dados
-  const query = client.query('SELECT * "id_Usuario", "cd_CPF","cd_Email", "no_Pessoa", "dt_Admissao" FROM "USUARIO" ');
+  const query = client.query('SELECT "id_Usuario", "cd_CPF","cd_Email", "no_Pessoa", "dt_Admissao", "is_Adm" FROM "USUARIO" ');
   
   return query;
    
