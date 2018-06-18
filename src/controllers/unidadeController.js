@@ -1,5 +1,6 @@
 
  const repository = require('../repositories/unidadeRepository');
+ const error = require("./erroController");
 
 
  exports.get = (req, res, next) => {
