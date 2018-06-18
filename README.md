@@ -5,10 +5,7 @@
 ## Softwares
 
 ### [Backend](https://github.com/AbraaoHonorio/servernode/)
-O Backend Minha Cidade expõe uma API de fácil acesso aos dados coletados pelo Crawler, provendo uma forma simples e eficiente de analisar dados públicos referentes às despesas municipais.
-
-### [Documentação da API]
- Criamos uma API afim de disponibilizar esses dados de forma mais fácil para que futuros desenvolvedores posam criar aplicações com esses dados. acessem o site e veja a documentação completa.
+O Backend HULW expõe uma API de fácil, provendo uma forma simples e eficiente
  
  
  
