@@ -33,6 +33,20 @@ exports.getById = (req, res, next) => {
     }
 };
 
+exports.getByUserId = (req, res, next) => {
+    try {
+        var data =  repository.getByUserId(req.params.user_id);
+        
+        data.then(function(response){
+            return res.json(response.rows)
+        })    
+           
+      } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+};
 
 exports.post = (req, res, next) => {
 
