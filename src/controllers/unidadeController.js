@@ -44,7 +44,11 @@ console.log( ' ->   ' +JSON.stringify(req.params.codigo_unidade));
 		var data =  repository.getByCodigoUnidade(req.params.codigo_unidade);
 		
         data.then(function(response){
-            return res.json(response.rows[0])
+		if(response.rows.length == 0){
+			return error("Unidade nao encontrado", 404, next);
+		}else{
+            		return res.json(response.rows[0])
+		}
         })    
            
       } catch (e) {
