@@ -5,7 +5,6 @@ const controller = require('../controllers/userController')
 router.get('/', controller.get);
 router.get('/:id', controller.getById);
 router.get('/cpf/:cpf', controller.getByCpf);
-router.get('/localizacao/id_localizacao', controller.getByIdLocalizacao);
 router.post('/', controller.post);
 router.put('/:id', controller.put);
 router.delete('/', controller.delete);
