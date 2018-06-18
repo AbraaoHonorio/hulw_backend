@@ -20,6 +20,8 @@ const locationRoute = require('./routes/localizacaoRoute');
 const avaliacaoDesempenhoRoute = require('./routes/avaliacaoDesempenho');
 const avaliacaoProbatorioRoute = require('./routes/avaliacaoProbatorio');
 const unidadeRoute = require('./routes/unidadeRoute');
+const estagioProbatorioRoute = require('./routes/estagioProbatorioRoute');
+
 //Middleware
 const verificaToken = require('./auth/verificaToken');
 app.use(logger('dev'));
@@ -40,6 +42,7 @@ app.use('/localizacao', verificaToken, locationRoute);
 app.use('/avaliacao/desempenho', verificaToken, avaliacaoDesempenhoRoute);
 app.use('/avaliacao/probatorio', verificaToken, avaliacaoProbatorioRoute);
 app.use('/unidade', verificaToken, unidadeRoute);
+app.use('/estagio/probatorio',verificaToken, estagioProbatorioRoute);
 
 //catch 404 and forward to error handler
 app.use(function(req, res, next) {
