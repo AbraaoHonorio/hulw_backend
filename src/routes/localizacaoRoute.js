@@ -7,6 +7,7 @@ router.post('/', controller.post);
 router.put('/:id', controller.put);
 router.get('/:id', controller.getById);
 router.get('/usuario/:user_id', controller.getByUserId);
+router.get('/usuario-localizacao/:id_localizacao', controller.getUserIdById);
 router.delete('/', controller.delete);
 
 router.post('/', controller.post);
