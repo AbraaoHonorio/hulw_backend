@@ -1,6 +1,6 @@
 
  const repository = require('../repositories/unidadeRepository');
- //const error = require("./erroController");
+ const error = require("./erroController");
 
 
  exports.get = (req, res, next) => {
@@ -45,11 +45,11 @@ console.log( ' ->   ' +JSON.stringify(req.params.codigo_unidade));
 		var data =  repository.getByCodigoUnidade(req.params.codigo_unidade);
 		
         data.then(function(response){
-		//if(response.rows.length == 0){
-			//return error("Unidade nao encontrado", 404, next);
-		//}else{
+		if(response.rows.length == 0){
+			return error("Unidade nao encontrado", 404, next);
+		}else{
             		return res.json(response.rows[0])
-		//}
+		}
         })    
            
       } catch (e) {
