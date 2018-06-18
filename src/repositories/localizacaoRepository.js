@@ -56,6 +56,17 @@ exports.getById =  function(id_Localizacao)  {
 
 }
 
+exports.getByUserId = function(id_Usuario){
+     //Realiza a leitura no banco de dados
+    const query = client.query('SELECT * FROM "LOCALIZACAO" WHERE "id_Usuario"=($1)', [id_Usuario])
+  
+    query.then(function(row){
+        results.push(row)
+    })
+
+    return query  
+} 
+
 exports.remove =  function(id_Localizacao)  {
 
     console.log(JSON.stringify(id_Localizacao));
