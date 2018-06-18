@@ -67,9 +67,9 @@ exports.getByUserId = function(id_Usuario){
     return query  
 } 
 
-exports.getUserIdById = function(id_Localizacao){
+exports.getUserIdById = function(id_Unidade){
     //Realiza a leitura no banco de dados
-    const query = client.query('SELECT * FROM "LOCALIZACAO" WHERE "id_Unidade"=($1)', [id_Localizacao])
+    const query = client.query('SELECT "id_Usuario" FROM "LOCALIZACAO" WHERE "id_Unidade"=($1)', [id_Unidade])
   
     query.then(function(row){
         results.push(row)
