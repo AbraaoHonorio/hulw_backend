@@ -48,6 +48,21 @@ exports.getByUserId = (req, res, next) => {
     }
 };
 
+exports.getUserIdById = (req, res, next) =>{
+	try {
+        var data =  repository.getUserIdById(req.params.id_localizacao);
+        
+        data.then(function(response){
+            return res.json(response.rows)
+        })    
+           
+      } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+};
+
 exports.post = (req, res, next) => {
 
 	try {
