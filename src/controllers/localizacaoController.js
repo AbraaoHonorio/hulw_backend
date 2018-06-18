@@ -50,7 +50,7 @@ exports.getByUserId = (req, res, next) => {
 
 exports.getUserIdById = (req, res, next) =>{
 	try {
-        var data =  repository.getUserIdById(req.params.id_localizacao);
+        var data =  repository.getUserIdById(req.params.id_unidade);
         
         data.then(function(response){
             return res.json(response.rows)
