@@ -81,12 +81,12 @@ exports.create =  function(estagioProbatorioNovo)  {
 
     const data = {id_Estagio_Probatorio: estagioProbatorioNovo.id_Estagio_Probatorio,
                   dt_Ano: estagioProbatorioNovo.dt_Ano,
-                  id_Usuario: estagioProbatorioNovo.id_Usuario}
+                  id_Usuario: estagioProbatorioNovo.id_Usuario};
    
-       client.query('INSERT INTO "ESTAGIO_PROBATORIO"("id_Estagio_Probatorio", "dt_Ano", "id_Usuario") values($1, $2, $3)',
-           [data.id_Estagio_Probatorio, data.dt_Ano, data.id_Usuario])
-     
-   
+    const query = client.query('INSERT INTO "ESTAGIO_PROBATORIO"("id_Estagio_Probatorio", "dt_Ano", "id_Usuario") values($1, $2, $3)',
+           [data.id_Estagio_Probatorio, data.dt_Ano, data.id_Usuario]);
+
+    return query;
 }
 
 
