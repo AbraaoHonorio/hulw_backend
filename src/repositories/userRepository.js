@@ -27,12 +27,13 @@ exports.getById =  function(id_Usuario)  {
 }
 
 exports.create =  function(UsuarioNovo)  {
-
+  console.log(UsuarioNovo);
   const data = { cd_Senha: UsuarioNovo.cd_Senha, cd_CPF: UsuarioNovo.cd_CPF,
-    cd_Email: UsuarioNovo.cd_Email, no_Pessoa: UsuarioNovo.no_Pessoa, dt_Admissao: new Date(UsuarioNovo.dt_Admissao)}
+            cd_Email: UsuarioNovo.cd_Email, no_Pessoa: UsuarioNovo.no_Pessoa, dt_Admissao: new Date(UsuarioNovo.dt_Admissao)
+            , is_Adm: UsuarioNovo.is_Adm};
 
-  const query = client.query('INSERT INTO "USUARIO"("cd_Senha", "cd_CPF", "cd_Email", "no_Pessoa", "dt_Admissao") values($1,$2, $3, $4, $5)',
-    [data.cd_Senha, data.cd_CPF, data.cd_Email, data.no_Pessoa, data.dt_Admissao]);
+  const query = client.query('INSERT INTO "USUARIO"("cd_Senha", "cd_CPF", "cd_Email", "no_Pessoa", "dt_Admissao", "is_Adm") values($1,$2, $3, $4, $5, $6)',
+    [data.cd_Senha, data.cd_CPF, data.cd_Email, data.no_Pessoa, data.dt_Admissao, data.is_Adm]);
 
   return query;
 }

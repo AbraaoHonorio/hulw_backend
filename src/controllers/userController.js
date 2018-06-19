@@ -83,15 +83,16 @@ exports.getByCpf = (req, res, next) => {
 exports.post = (req, res, next) => {
     const erros = [];
     const regex = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+                                // "cd_Senha", "cd_CPF", "cd_Email", "no_Pessoa", "dt_Admissao", "is_Adm"
     const body = _.pick(req.body, "cd_Senha", "cd_CPF", "cd_Email", "no_Pessoa", "dt_Admissao", "is_Adm");
 
     if(!validator.isEmail(body.cd_Email)){
         erros.push("Email invalido");
     }
 
-    if(!validator.isLength(body.cd_Senha, { min: 4 })){
-        erros.push("Senha tem que ter no mínimo quatro caracteres");
-    }
+    // if(!validator.isLength(body.cd_Senha, { min: 4 })){
+    //     erros.push("Senha tem que ter no mínimo quatro caracteres");
+    // }
 
     if(!validator.isISO8601(body.dt_Admissao)){
         erros.push("Data de admissao invalida");
@@ -104,12 +105,14 @@ exports.post = (req, res, next) => {
     if(!validator.matches(body.no_Pessoa, regex)){
         erros.push("Nome invalido");
     }
-
+    
     if (erros.length) {
         return error(erros, 422, next);
     }else{
-        var data =  repository.create(req.body);
+        console.log("executando");
+        var data =  repository.create(body);
 
+        console.log(data);
         data.then((response) => {
             res.json({msg: 'usuario cadastrado com sucesso'});
         }).catch((err) => {
