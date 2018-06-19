@@ -34,12 +34,12 @@ exports.update =  function(id_Localizacao, localizacaoNovo)  {
     console.log('id '+  JSON.stringify(id_Localizacao) +'  localizacaoNovo ' + JSON.stringify(localizacaoNovo));
 
     const data = {ano: localizacaoNovo.dt_Ano, idUsuario: localizacaoNovo.id_Usuario,
-        idUnidade: localizacaoNovo.id_Unidade, isChefe: localizacaoNovo.is_Chefe}
+        idUnidade: localizacaoNovo.id_Unidade, isChefe: localizacaoNovo.is_Chefe};
 
-        client.query('UPDATE "LOCALIZACAO" SET "dt_Ano"=($1), "id_Usuario"=($2), "id_Unidade"=($3), "is_Chefe"=($4) WHERE "id_Localizacao"=($5)',
-        [data.ano, data.idUsuario, data.idUnidade, data.isChefe,id_Localizacao])
-
-
+      const query = client.query('UPDATE "LOCALIZACAO" SET "dt_Ano"=($1), "id_Usuario"=($2), "id_Unidade"=($3), "is_Chefe"=($4) WHERE "id_Localizacao"=($5)',
+        [data.ano, data.idUsuario, data.idUnidade, data.isChefe,id_Localizacao]);
+  
+    return query;
 }
 
 
