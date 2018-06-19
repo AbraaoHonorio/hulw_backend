@@ -1,4 +1,4 @@
-# HULW
+# Sistema de Avaliação de Desempenho Hospital Universitário Lauro Wanderley (HULW)
 ## O que é?
 > Está ferramenta será utilizada por um usuario servidor que terá permissão de responder um questionário fixo com algumas questões pré-estabelecidas pelo cliente com a finalidade de fazer uma auto-avaliação do seu trabalho dentro a instituição ao qual ele trabalha.
 		Um segundo perfil de usuário é tido como Gestor tem acesso a todos os formulários das unidades e equipes, durante o preenchimento do questionário ele se auto-avalia e avalia o desempenho dos funcionários que pertencem a sua área e setor. 
