@@ -1,13 +1,18 @@
 # HULW
 ## O que é?
-> .....................
+> Está ferramenta será utilizada por um usuario servidor que terá permissão de responder um questionário fixo com algumas questões pré-estabelecidas pelo cliente com a finalidade de fazer uma auto-avaliação do seu trabalho dentro a instituição ao qual ele trabalha.
+		Um segundo perfil de usuário é tido como Gestor tem acesso a todos os formulários das unidades e equipes, durante o preenchimento do questionário ele se auto-avalia e avalia o desempenho dos funcionários que pertencem a sua área e setor. 
+		Um terceiro perfil de usuário é tido como Administrador, este perfil tem acesso a todas as informações referentes aos formulários já preenchidos além de se auto-avaliar e avaliar os demais dentro do seu ambiente de trabalho.
+   
 
 ## Softwares
 
-### [Backend](https://github.com/AbraaoHonorio/servernode/)
+### [Backend](https://github.com/AbraaoHonorio/hulw_backend/)
 O Backend HULW expõe uma API de fácil, provendo uma forma simples e eficiente
  
  
+ ### [frontend](https://github.com/Kenedw/HULW)
+O front HULW foi criado usando react, provendo um site de avaliação de forma simples.
  
 ## Instalação
 Uma vez com o [NodeJS instalado](https://nodejs.org/en/download/)
@@ -16,7 +21,7 @@ Uma vez com o [NodeJS instalado](https://nodejs.org/en/download/)
 
 ```shell
 $ git clone https://github.com/minha-cidade/minha-cidade.git
-$ cd servernode
+$ cd hulw_backend
 ```
 
 2. Rode  `npm install` que baixará todos os node modules  necessários
