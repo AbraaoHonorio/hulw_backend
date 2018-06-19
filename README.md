@@ -46,9 +46,9 @@ e  localhost:3000/(rota) para ver a API.
 
 
 ## Grupo de backend
-- Abraão Allysson - Líder tecnico 
-- Josué Paiva - Engenheiro de software 
-- Yuri Gouveia - Engenheiro de software 
+- [Abraão Allysson](https://github.com/AbraaoHonorio/) - Líder Tecnico 
+- [Josué Paiva](https://github.com/josuepaiva) - Engenheiro de software 
+- [Yuri Gouveia](https://github.com/yuriigouveia2/) - - Engenheiro de software 
 
 
 
