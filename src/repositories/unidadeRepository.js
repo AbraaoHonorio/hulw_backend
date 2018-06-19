@@ -77,12 +77,14 @@ exports.update =  function(idUnidade, UnidadeNovo)  {
     console.log('id '+  JSON.stringify(idUnidade) +'  UsuarioNovo ' + JSON.stringify(UnidadeNovo));
 
     const data = {cdUnidade: UnidadeNovo.cd_Unidade, deUnidade: UnidadeNovo.de_UNIDADE,
-        idUnidadeSup: UnidadeNovo.id_Unidade_Superior}
+        idUnidadeSup: UnidadeNovo.id_Unidade_Superior};
 
 
 
-        client.query('UPDATE "UNIDADE" SET "cd_Unidade"=($1), "de_UNIDADE"=($2), "id_Unidade_Superior"=($3) WHERE "id_Unidade"=($4)',
-        [data.cdUnidade, data.deUnidade, data.idUnidadeSup,idUnidade])
+     const query = client.query('UPDATE "UNIDADE" SET "cd_Unidade"=($1), "de_UNIDADE"=($2), "id_Unidade_Superior"=($3) WHERE "id_Unidade"=($4)',
+        [data.cdUnidade, data.deUnidade, data.idUnidadeSup,idUnidade]);
+    
+    return query;
 }
 
 
