@@ -20,7 +20,7 @@ Uma vez com o [NodeJS instalado](https://nodejs.org/en/download/)
 1. Clone esse repositório e entre em seu diretório
 
 ```shell
-$ git clone https://github.com/minha-cidade/minha-cidade.git
+$ git clone https://github.com/AbraaoHonorio/hulw_backend.git
 $ cd hulw_backend
 ```
 
